@@ -10,7 +10,7 @@ function Navbar() {
 	const { cart } = useSelector(state => state)
 
 	return (
-		<nav className="flex justify-around items-center py-0 bg-slate-800 z-50 px-16 sticky top-0 py-1">
+		<nav className="flex justify-around items-center bg-slate-800 z-50 px-16 sticky top-0 py-1">
 			<NavLink to="/">
 				<img src={`${logo}`} alt="logo" width={50} className='' />
 			</NavLink>
