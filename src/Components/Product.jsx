@@ -2,8 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { add, remove } from '../redux/slices/CartSlice'
+import { toast } from 'react-toastify'
 
-function Product({ title, description, image, price, id }) {
+function Product({ post }) {
+
+	const { title, description, image, price, id } = post
 
 	const { cart } = useSelector(state => state)
 
@@ -14,30 +17,32 @@ function Product({ title, description, image, price, id }) {
 		toast.success("Item added to cart")
 	}
 
-	const removeFromCart = () =>{
+	const removeFromCart = () => {
 		dispatch(remove(post))
 		toast.success("Item removed from cart")
 	}
 
 	return (
-		<div>
-			<div className="">
-				<p>{title}</p>
+		<div className='w-full shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] rounded-md flex flex-col items-center  hover:scale-110 transition duration-300 ease-in px-6'>
+			<div className="font-bold text-2xl text-gray-700 py-2">
+				<h1>{title.split(' ').splice(0, 4).join(' ') + "..."}</h1>
 			</div>
-			<div className="">
-				<p>{description}</p>
+			<div className="w-40 h-20 text-gray-400 text-xs ">
+				<p>{description.split(' ').splice(0, 10).join(' ') + "..."}</p>
 			</div>
-			<div className="">
-				<img src={`${image}`} alt="" />
+			<div className="h-[180px]">
+				<img src={`${image}`} alt="" className='w-full h-full' />
 			</div>
-			<div className="">
-				<p>{price}</p>
+			<div className="flex justify-between w-full py-4 px-2 justify-self-end">
+				<div className="bg-green-800 font-bold text-white px-2 py-0.5 rounded-3xl">
+					<p>₹{price}</p>
+				</div>
+				{
+					cart.some((p) => p.id == id) ?
+						<button className='border-2 border-solid border-black px-2 rounded-3xl hover:bg-slate-800 hover:text-white font-semibold text-center flex' onClick={removeFromCart}>Remove Item</button> :
+						<button className='border-2 border-solid border-black px-2 rounded-3xl hover:bg-green-800 hover:text-white font-semibold text-center flex' onClick={addToCart}>Add to cart</button>
+				}
 			</div>
-			{
-				cart.some((p) => p.id == id) ?
-					<button onClick={removeFromCart}>Remove Item</button> :
-					<button onClick={addToCart}>Add to cart</button>
-			}
 		</div>
 	)
 }

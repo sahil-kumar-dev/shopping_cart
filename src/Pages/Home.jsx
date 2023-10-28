@@ -29,12 +29,12 @@ function Home() {
 		fetchProductData()
 	}, [])
 	return (
-		<div className="">
-			(
-			{
-				loading ? <Spinner /> : posts.map(post => <Product key={post.id} {...post} />)
-			}
-			)
+		<div className="flex items-center justify-center">
+			<div className=" max-w-6xl grid grid-cols-4 gap-8 p-2 min-h-[80vh]">
+				{
+					loading ? <Spinner /> : posts.map(post => <Product key={post.id} post={post} />)
+				}
+			</div>
 		</div>
 	)
 }

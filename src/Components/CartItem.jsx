@@ -1,7 +1,16 @@
 import React from 'react'
-import {MdOutlineDelete} from 'react-icons'
+import {AiFillDelete} from 'react-icons/ai'
+import { useDispatch } from 'react-redux'
+import {toast} from 'react-toastify'
+import { remove } from '../redux/slices/CartSlice'
 
-function CartItem({ image, description, title, price }) {
+function CartItem({ image, description, title, price,id }) {
+	const dispatch = useDispatch()
+
+	const removeFromCart =() =>{
+		dispatch(remove(id))
+		toast.success("Item removed.")
+	}
 	return (
 		<div>
 			<div className="">
@@ -13,9 +22,9 @@ function CartItem({ image, description, title, price }) {
 					<p>{description}</p>
 					<div className="">
 						<p>{price}</p>
-						<div className="">
-							<MdOutlineDelete />
-						</div>
+						<button className="" onClick={removeFromCart}>
+							<AiFillDelete />
+						</button>
 					</div>
 				</div>
 			</div>
