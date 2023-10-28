@@ -9,7 +9,7 @@ function CartItem({ image, description, title, price,id }) {
 
 	const removeFromCart =() =>{
 		dispatch(remove(id))
-		toast.success("Item removed.")
+		toast.error("Item removed.")
 	}
 	return (
 		<div>

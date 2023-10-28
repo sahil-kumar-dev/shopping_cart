@@ -30,7 +30,7 @@ function Home() {
 	}, [])
 	return (
 		<div className="flex items-center justify-center">
-			<div className=" max-w-6xl grid grid-cols-4 gap-8 p-2 min-h-[80vh]">
+			<div className=" max-w-xs md:max-w-6xl grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 p-2 min-h-[80vh]">
 				{
 					loading ? <Spinner /> : posts.map(post => <Product key={post.id} post={post} />)
 				}

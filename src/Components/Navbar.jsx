@@ -2,16 +2,16 @@ import React from 'react'
 import { FaShoppingCart } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import logo from '../../public/logo.png'
+import logo from '../image/logo.png'
 
 function Navbar() {
 
 	const { cart } = useSelector(state => state)
 
 	return (
-		<nav className="flex justify-between items-center py-0 bg-sky-500 px-16 sticky top-0">
+		<nav className="flex justify-around items-center py-0 bg-slate-800 z-50 px-16 sticky top-0 py-1">
 			<NavLink to="/">
-				<img src={`${logo}`} alt="logo" width={150} className='' />
+				<img src={`${logo}`} alt="logo" width={50} className='' />
 			</NavLink>
 
 			<div className="flex text-white">
