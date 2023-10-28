@@ -14,26 +14,27 @@ function Cart() {
 	
 
 	return (
-		<div>
+		<div >
 			{
 				cart.length > 0 ?
-					(<div>
-						<div className="">
+					(<div className='flex flex-col md:flex-row'>
+						<div className="cart-item lg:w-3/5 md:overflow-scroll md:h-[92vh] md:overflow-x-hidden px-8">
 							{
 								cart.map((item, index) => {
 									return <CartItem key={item.id} {...item} />
 								})
 							}
 						</div>
-						<div className="">
-							<div className="">
-								<h2>Your cart</h2>
-								<p>Summary</p>
-								<p><span>Total items: {cart.length}</span></p>
+						<div className="lg:w-2/5 px-4 md:px-0 flex flex-col justify-between py-8 ">
+							<div className="md:pl-12 px-8">
+								<h2 className="text-green-800 font-semibold md:text-5xl text-3xl">Your cart</h2>
+								<p className="text-green-800 font-bold md:text-7xl text-6xl">Summary</p>
+								<p className="font-semibold">Total items: <span className="font-bold">{cart.length}</span></p>
 							</div>
-							<div className="">
-								<p>Total Amount: {totalAmount}</p>
-								<button>Checkout Now</button>
+							<div className=" md:pl-12 px-8">
+								<p className="text-left mb-8 text-lg">Total Amount: <span className="font-bold">₹ {totalAmount}</span> </p>
+								<button className="bg-green-700 text-white font-semibold py-2 px-4 w-full md:w-4/5
+								 rounded-2xl">Checkout Now</button>
 							</div>
 						</div>
 					</div>) :
