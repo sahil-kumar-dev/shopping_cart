@@ -1,4 +1,4 @@
-import React, { useEffect , useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import CartItem from '../Components/CartItem'
@@ -9,9 +9,9 @@ function Cart() {
 	const [totalAmount, settotalAmount] = useState(0)
 
 	useEffect(() => {
-	  settotalAmount(cart.reduce((acc,curr) => acc + curr.price,0))
+		settotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0))
 	}, [cart])
-	
+
 
 	return (
 		<div >
@@ -38,9 +38,11 @@ function Cart() {
 							</div>
 						</div>
 					</div>) :
-					(<div>
-						<h1>Cart Empty</h1>
-						<Link to={'/'}><button>Shop Now</button></Link>
+					(<div className='flex items-center justify-center h-[90vh] overflow-hidden'>
+						<div className="flex flex-col items-center justify-center">
+							<h1 className='text-4xl text-green-600 font-bold my-8 text-center'>Cart Empty</h1>
+							<Link to={'/'}><button className='px-4 py-2 text-lg font-semibold bg-green-800 text-white '>Shop Now</button></Link>
+						</div>
 					</div>)
 			}
 		</div>
