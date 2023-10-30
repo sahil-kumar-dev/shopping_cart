@@ -4,7 +4,7 @@ import Product from '../Components/Product'
 
 function Home() {
 
-	const API_URL = "https://fakestoreapi.com/products"
+	const API_URL = "https://api.escuelajs.co/api/v1/products"
 
 	const [loading, setloading] = useState(false)
 	const [posts, setposts] = useState([])

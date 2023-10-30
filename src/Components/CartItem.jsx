@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { remove } from '../redux/slices/CartSlice'
 
-function CartItem({ image, description, title, price, id }) {
+function CartItem({ images, description, title, price, id }) {
 	const dispatch = useDispatch()
 
 	const removeFromCart = () => {
@@ -14,7 +14,7 @@ function CartItem({ image, description, title, price, id }) {
 	return (
 		<div className="flex h-[250px] border-b-2 border-solid border-gray-400 my-8">
 			<div className="w-2/5 flex items-center justify-center">
-				<img src={`${image}`} alt="" className='md:w-[200px] w-full h-40 md:h-60' />
+				<img src={`${images[0]}`} alt="" className='md:w-[200px] w-full h-40 md:h-60' />
 			</div>
 			<div className="w-3/5 h-full flex flex-col justify-between">
 				<div className=" ">

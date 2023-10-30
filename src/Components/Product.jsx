@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { add, remove } from '../redux/slices/CartSlice'
 import { toast } from 'react-toastify'
 import { NavLink } from 'react-router-dom'
+import ImageCarousel from './ImageCarousel'
 
 function Product({ post }) {
 
-	const { title, description, image, price, id } = post
+	const { title, description, images, price, id } = post
 
 	const { cart } = useSelector(state => state)
 
@@ -28,13 +29,13 @@ function Product({ post }) {
 			<div className="font-bold text-2xl h-20 break-all text-gray-700 py-2">
 				<h1>{title.split(' ').splice(0, 4).join(' ') + "..."}</h1>
 			</div>
-			<div className="w-40 h-20 text-gray-400 text-xs ">
+			<div className="w-40 h-16 text-gray-400 text-xs ">
 				<p>{description.split(' ').splice(0, 10).join(' ') + "..."}</p>
 			</div>
-			<div className="h-[180px]">
-				<img src={`${image}`} alt="" className='w-full h-full' />
-			</div>
-			<div className="flex justify-between w-full py-4 px-2 justify-self-end">
+
+			{/* <img src={`${images[0]}`} alt="" className='w-full h-full' /> */}
+			<ImageCarousel image={images} />
+			<div className="flex justify-between w-full py-4 px-2 justify-self-end ">
 				<div className="bg-green-800 font-bold text-white px-2 py-0.5 rounded-3xl">
 					<p>₹ {price}</p>
 				</div>
