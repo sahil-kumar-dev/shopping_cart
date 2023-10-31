@@ -5,8 +5,11 @@ import { add, remove } from '../redux/slices/CartSlice'
 import { toast } from 'react-toastify'
 import { NavLink } from 'react-router-dom'
 import ImageCarousel from './ImageCarousel'
+import Loadingbar from 'react-top-loading-bar'
 
 function Product({ post }) {
+
+	const [Progress, setProgress] = useState(0)
 
 	const { title, description, images, price, id } = post
 
@@ -20,12 +23,14 @@ function Product({ post }) {
 	}
 
 	const removeFromCart = () => {
-		dispatch(remove(post))
+		// dispatch(remove(post))
+		setProgress(100)
 		// toast.success("Item removed from cart")
 	}
 
 	return (
 		<div className='w-full shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] rounded-md flex flex-col items-center  hover:scale-105 transition duration-300 ease-in px-6'>
+			<Loadingbar color="#ffffff" progress={Progress}  onLoaderFinished={() => setProgress(0)} />
 			<div className="font-bold text-2xl h-20 break-all text-gray-700 py-2">
 				<h1>{title.split(' ').splice(0, 4).join(' ') + "..."}</h1>
 			</div>

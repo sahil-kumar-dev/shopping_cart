@@ -2,10 +2,12 @@ import React from 'react'
 import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai'
 import { useState } from 'react'
 
+
 function ImageCarousel({ image }) {
 
 	const [move, setmove] = useState(0)
 	const [count, setcount] = useState(1)
+
 
 	const maxLength = image.length
 
@@ -29,6 +31,7 @@ function ImageCarousel({ image }) {
 
 	return (
 		<div className="h-[210px] overflow-hidden relative">
+			
 			<div className={`flex  transition-all duration-300 `} style={customStyle}>
 				<img src={`${image[0]}`} alt="" />
 				<img src={`${image[1]}`} alt="" />
